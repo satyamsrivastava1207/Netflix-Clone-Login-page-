@@ -1,0 +1,43 @@
+<h1>0</h1>
+
+<input type="button" onclick="startCounter()" value="start">
+
+<script>
+    let counter = 0;
+    let intervalId;
+    let inactivity=0;
+
+    function startCounter() {
+        old=parseInt(document.getElementsByTagName("h1")[0].innerText);
+        counter=old;
+        document.getElementsByTagName("h1")[0].innerText = counter;
+        intervalId = setInterval(updateCounter, 1000);
+        inactivity=0;
+    }
+
+    function updateCounter() {
+        counter++;
+        document.getElementsByTagName("h1")[0].innerText = counter;
+        console.log(counter);
+    }
+
+    function countInactivity() {
+        setInterval(function(){
+            inactivity++;
+            console.log(inactivity);
+        }, 1000);
+    }
+
+    function checkInactivity() {
+        setInterval(function(){
+            if(inactivity>10){
+                console.log("inactivity");
+                alert("inactivity");
+                inactivity=0;
+            }
+        }, 1000);
+    }
+    countInactivity();
+    checkInactivity();
+
+</script>
